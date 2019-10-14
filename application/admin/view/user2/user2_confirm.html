@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<!-- 顶部开始 -->
+{include file='public/nav'/}
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<div class="wrapper">
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li class="list">
+                    <a href="{:url('admin/user2/index')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单申报
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user2/index_query1')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user2/index_car')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        运输车辆查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user2/index_confirm')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单确认
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        //初始化让列表展开
+        window.onload=function () {
+            var btn= $('.left-nav #nav1 ');
+            btn.addClass('open');
+            btn.find('.nav_right').html('&#xe6a6;');
+            btn.children('.sub-menu').slideDown();
+        }
+    </script>
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+            <form class="layui-form xbs">
+                <div class="layui-form-pane">
+                    <div class="layui-form-item" style="display: inline-block;">
+                        <div class="layui-input-inline">
+                            <input type="text" name="username"  placeholder="请输入运单号" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-input-inline" style="width:80px">
+                            <button class="layui-btn"><i class="layui-icon">&#xe615;</i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="query-result">
+                <!--<table class="table table-responsive">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th colspan="1">运单号</th>-->
+                        <!--<th colspan="1">出产时间</th>-->
+                        <!--<th colspan="1">运输单位</th>-->
+                        <!--<th colspan="1">目的地/来源地</th>-->
+                        <!--<th colspan="1">污泥类型</th>-->
+                        <!--<th colspan="1">污泥总重/t</th>-->
+                        <!--<th colspan="2">操作</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody id="tbody-result" class="the_table">-->
+                    <!--<tr>-->
+                        <!--<td>20190205010212</td>-->
+                        <!--<td>2019.2.5</td>-->
+                        <!--<td>运输单位02</td>-->
+                        <!--<td>产泥单位01</td>-->
+                        <!--<td>脱水泥饼</td>-->
+                        <!--<td>200</td>-->
+                        <!--<td>-->
+                            <!--<div class="file-box">-->
+                                <!--<form>-->
+                                    <!--<input type='text' name='text1' id='text1' class='txt' />-->
+                                    <!--<input type='button' class='btn1' value='浏览...' />-->
+                                    <!--<input type="file"  class="file" id="file1" size="28" name="file1"-->
+                                           <!--onchange='document.getElementById("text1").value=this.value'/>-->
+                                    <!--<input type="button" name="submit" id="btn1" class="btn2" value="上传交接信息" />-->
+                                    <!--&lt;!&ndash;<a title="撤回" href="javascript:;" onclick="">上传交接信息</a>&ndash;&gt;-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td class="col-1"> <a title="确认" href="javascript:;" onclick="level_confirm(this,'')">确认</a></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>201902060200524</td>-->
+                        <!--<td>2019.2.6</td>-->
+                        <!--<td>运输单位01</td>-->
+                        <!--<td>地块005</td>-->
+                        <!--<td>干化颗粒</td>-->
+                        <!--<td>100</td>-->
+                        <!--<td>-->
+                            <!--<div class="file-box">-->
+                                <!--<form>-->
+                                    <!--<input type='text' name='text1' id='text3' class='txt' />-->
+                                    <!--<input type='button' class='btn1' value='浏览...' />-->
+                                    <!--<input type="file"  class="file" id="file3" size="28" name="file1"-->
+                                           <!--onchange='document.getElementById("text3").value=this.value'/>-->
+                                    <!--<input type="button" name="submit" id="btn3" class="btn2" value="上传交接信息" />-->
+                                    <!--&lt;!&ndash;<a title="撤回" href="javascript:;" onclick="">上传交接信息</a>&ndash;&gt;-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td class="col-1"> <a title="确认" href="javascript:;" onclick="level_confirm(this,'')">确认</a></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>20190224010212</td>-->
+                        <!--<td>2019.2.24</td>-->
+                        <!--<td>运输单位02</td>-->
+                        <!--<td>产泥单位02</td>-->
+                        <!--<td>脱水泥饼</td>-->
+                        <!--<td>120</td>-->
+                        <!--<td>-->
+                            <!--<div class="file-box">-->
+                                <!--<form>-->
+                                    <!--<input type='text' name='text1' id='text2' class='txt' />-->
+                                    <!--<input type='button' class='btn1' value='浏览...' />-->
+                                    <!--<input type="file"  class="file" id="file2" size="28" name="file2"-->
+                                           <!--onchange='document.getElementById("text2").value=this.value'/>-->
+                                    <!--<input type="button" name="submit" id="btn2" class="btn2" value="上传交接信息" />-->
+                                    <!--&lt;!&ndash;<a title="撤回" href="javascript:;" onclick="">上传交接信息</a>&ndash;&gt;-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td class="col-1"> <a title="确认" href="javascript:;" onclick="level_confirm(this,'')">确认</a></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>201902180201324</td>-->
+                        <!--<td>2019.2.18</td>-->
+                        <!--<td>运输单位01</td>-->
+                        <!--<td>地块013</td>-->
+                        <!--<td>热水解污泥</td>-->
+                        <!--<td>150</td>-->
+                        <!--<td>-->
+                            <!--<div class="file-box">-->
+                                <!--<form>-->
+                                    <!--<input type='text' name='text1' id='text4' class='txt' />-->
+                                    <!--<input type='button' class='btn1' value='浏览...' />-->
+                                    <!--<input type="file"  class="file" id="file4" size="28" name="file1"-->
+                                           <!--onchange='document.getElementById("text4").value=this.value'/>-->
+                                    <!--<input type="button" name="submit" id="btn4" class="btn2" value="上传交接信息" />-->
+                                    <!--&lt;!&ndash;<a title="撤回" href="javascript:;" onclick="">上传交接信息</a>&ndash;&gt;-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td class="col-1"> <a title="确认" href="javascript:;" onclick="level_confirm(this,'')">确认</a></td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th colspan="1">运单号</th>
+                        <th colspan="1">出产时间</th>
+                        <th colspan="1">运输单位</th>
+                        <th colspan="1">目的地</th>
+                        <th colspan="1">污泥类型</th>
+                        <th colspan="1">污泥总重/t</th>
+                        <th colspan="2">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-result">
+                    {volist name='list' id='vo'}
+                    <tr>
+                        <td>{$vo.yundanid}</td>
+                        <td>{$vo.t1}</td>
+                        <td>{$vo.t2}</td>
+                        <td>{$vo.t3}</td>
+                        <td>{$vo.t4}</td>
+                        <td>{$vo.c1}</td>
+                        <td class="col-7">
+                            <div class="file-box">
+                                <form id="{$vo.yundanid}form">
+                                    <input type='text' name='{$vo.yundanid}text' id='{$vo.yundanid}text' class='txt' />
+                                    <input type='button' class='btn1' value='浏览...' />
+                                    <input type="file"  class="file" id="{$vo.yundanid}file" size="28" name="{$vo.yundanid}file"
+                                           onchange='document.getElementById("{$vo.yundanid}text").value=this.value'/>
+                                    <input type="button" name="submit" id="{$vo.yundanid}" class="btn2" value="上传交接信息" />
+                                    <!--<a title="撤回" href="javascript:;" onclick="">上传交接信息</a>-->
+                                </form>
+                            </div>
+                        </td>
+                        <td class="col-1"> <a title="确认" href="javascript:;" onclick="level_confirm(this,'{$vo.yundanid}')">确认</a></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div style="text-align: center">{$list->render()}</div>
+            </div>
+
+
+            <!-- 右侧内容框架，更改从这里结束 -->
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+</div>
+<!-- 中部结束 -->
+<script>
+    document.getElementById("logo").innerHTML="处理单位系统";
+    function level_confirm(obj,id) {
+        layer.confirm('确认要确认该运单吗？',function(index){
+            //发异步确认数据
+            $.get("{:url('admin/user1/confirm')}",{id:id});
+            layer.msg('已确认!',{icon:1,time:700});
+            window.location.href="{:url('user1/index_query')}";//成功加载user1控制器的index_query
+        });
+    }
+</script>
+{include file='public/footer'/}

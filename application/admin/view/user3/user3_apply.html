@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<!-- 顶部开始 -->
+{include file='public/nav'/}
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<div class="wrapper">
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li class="list">
+                    <a href="{:url('admin/user3/index')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        车辆人员登记
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user3/index_query')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user3/index_car')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        运输车辆查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user3/index_confirm')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单确认
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+            <form id="form3" enctype="multipart/form-data" action="{:url('admin/user3/create')}" method="post">
+                <div class="car-people-title">车辆登记</div>
+                <div class="photo">
+                    <img src="__STATIC__/images/moren.jpg" style="width: 120px;height:140px;" id="image_show">
+                    <a href="javascript:;">
+                        选择图片
+                        <input type="file" value="浏览" name="image" id="image"/>
+                    </a>
+                </div>
+                <div class="car-people-content">
+                    <div><span style="letter-spacing: 25px">牌照号</span>:
+                        <input type="text" class="form-control" placeholder="请输入牌照号" name="car_id" id="car_id">
+                    </div>
+                    <div><span style="letter-spacing: 5px;">车辆品牌类型</span>:
+                        <input type="text" class="form-control" placeholder="请输入车辆品牌类型" name="car_brand" id="car_brand">
+                    </div>
+                    <div><span>车辆证书登记编号</span>:
+                        <input type="text" class="form-control"  placeholder="请输入车辆证书登记编号" name="car_dengji" id="car_dengji">
+                    </div>
+                </div>
+                <hr>
+                <div class="car-people-title">人员登记</div>
+                <div class="photo">
+                    <img src="__STATIC__/images/moren.jpg" style="width: 120px;height:140px;" id="image_show2">
+                    <a href="javascript:;">
+                        选择图片
+                        <input type="file" value="浏览" name="image2" id="image2"/>
+                    </a>
+                </div>
+                <div class="car-people-content">
+                    <div><span style="letter-spacing: 44px">姓名</span>:
+                        <input type="text" class="form-control" placeholder="请输入姓名" name="people_name" id="people_name">
+                    </div>
+                    <div><span style="letter-spacing: 2px;">机动车驾驶证号</span>:
+                        <input type="text" class="form-control" placeholder="请输入机动车驾驶证号" name="driver_id" id="driver_id">
+                    </div>
+                    <div><span style="letter-spacing: 15px;">联系电话</span>:
+                        <input type="text" class="form-control"  placeholder="请输入联系电话" name="tel" id="tel">
+                    </div>
+                </div>
+                <div class="shenbao2">
+                    <button type="submit" id="shenbaobtn" class="btn btn-info">提交</button>
+                </div>
+            </form>
+            <!-- 右侧内容框架，更改从这里结束 -->
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+</div>
+<!-- 中部结束 -->
+<script>
+    document.getElementById("logo").innerHTML="运输单位系统";
+    //显示缩略图
+    $('#image').on('change',function () {
+        var input = $('#image');
+        var upload_file = input[0].files[0];
+        if(!upload_file.name){
+            alert("未选择图片");
+        }
+        else {
+            var url = window.URL.createObjectURL(upload_file);
+            $('#image_show').attr('src',url);
+        }
+    })
+    $('#image2').on('change',function () {
+        var input = $('#image2');
+        var upload_file = input[0].files[0];
+        if(!upload_file.name){
+            alert("未选择图片");
+        }
+        else {
+            var url = window.URL.createObjectURL(upload_file);
+            $('#image_show2').attr('src',url);
+        }
+    })
+</script>
+{include file='public/footer'/}

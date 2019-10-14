@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<div class="content">
+    <!-- 右侧内容框架，更改从这里开始 -->
+    <div class="yundan-title"><h1>报备单</h1></div>
+    <div class="report-content">
+        <form id="yundan" class="layui-form layui-form-pane">
+            <div class="report-reason">
+                <label style="float: left">运&nbsp;单&nbsp;号&nbsp;&nbsp;</label>
+                <input type="text" style="width: 407px" value="{$yundanid}" id="yundanid" name="yundanid">
+            </div>
+            <div class="report-reason">
+                <label style="float: left">报错原因</label>
+                <input type="text" style="width: 407px" id="reason" name="reason">
+            </div>
+            <div class="report-beizhu">
+                <div class="report-label"><label>备&nbsp;&nbsp;&nbsp;注</label></div>
+                <textarea rows="10" cols="56" id="beizhu" name="beizhu"></textarea>
+            </div>
+            <button id="savebtn" class="btn btn-info" type="button">提交</button>
+        </form>
+    </div>
+    <!-- 右侧内容框架，更改从这里结束 -->
+</div>
+    <script>
+        $(function () {
+            $("#savebtn").on('click',function () {
+                //表单使用ajax提交
+                $.ajax({
+                    type:'POST',
+                    url:"{:url('user1/report_save')}",//调用user1控制器的report_save方法
+                    data:$("#yundan").serialize(),//数据来源于表单，并对数据进行序列化,提交表单
+                    dataType:'json',//数据类型
+                    success:function (data) {
+                        if(data.status==1){
+                            alert(data.message);
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+//                            window.location.href="{:url('user1/index_query')}";//成功加载user1控制器的index_query
+                        }else {
+                            alert(data.message);
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        }
+                    },
+                    error:function () {
+                        alert("服务器出错！");
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+    <!-- 顶部开始 -->
+    {include file='public/nav'/}
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+    <div class="wrapper">
+        <!-- 左侧菜单开始 -->
+        <div class="left-nav">
+            <div id="side-nav">
+                <ul id="nav">
+                    <li class="list">
+                        <a href="{:url('admin/manager/index')}">
+                            <i class="iconfont">&#xe70b;</i>
+                            企业审核管理界面
+                            <i class="iconfont nav_right"></i>
+                        </a>
+                    </li>
+                    <li class="list" id="nav1">
+                        <a href="{:url('admin/order/index')}">
+                            <i class="iconfont">&#xe70b;</i>
+                            污泥运单管理界面
+                            <i class="iconfont nav_right">&#xe6a7;</i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="{:url('admin/order/index')}">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    产泥企业运单
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('admin/order/index2')}">
+                                    <i class="iconfont">&nbsp;&nbsp;&nbsp;</i>
+                                    处理企业运单
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('admin/order/index4')}">
+                                    <i class="iconfont">&nbsp;&nbsp;&nbsp;</i>
+                                    消纳单位地块信息
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            //初始化让列表展开
+            window.onload=function () {
+                var btn= $('.left-nav #nav1 ');
+                btn.addClass('open');
+                btn.find('.nav_right').html('&#xe6a6;');
+                btn.children('.sub-menu').slideDown();
+            }
+        </script>
+        <!-- 左侧菜单结束 -->
+        <!-- 右侧主体开始 -->
+        <div class="page-content">
+          <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+              <form class="layui-form xbs">
+                  <div class="layui-form-pane">
+                      <div class="layui-form-item" style="display: inline-block;">
+                          <div class="layui-input-inline">
+                              <input type="text" name="username"  placeholder="请输入运单号" autocomplete="off" class="layui-input">
+                          </div>
+                          <button id="querybtn" class="btn btn-query3" type="button">查询</button>
+                      </div>
+                  </div>
+              </form>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>
+                            运单编号
+                        </th>
+                        <th>
+                            所属公司
+                        </th>
+                        <th>
+                            污泥重量
+                        </th>
+                        <th>
+                            PH值
+                        </th>
+                        <th>
+                            含水率
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {volist name='list' id='vo'}
+                    <tr>
+                        <td>
+                            {$vo.yundanid}
+                        </td>
+                        <td>
+                            {$vo.unit}
+                        </td>
+                        <td >
+                            {$vo.c1}
+                        </td>
+                        <td >
+                            {$vo.c2}
+                        </td>
+                        <td >
+                            {$vo.c3}%
+                        </td>
+                        <td class="td-manage">
+                            <a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="详细信息">
+                                <i class="layui-icon">&#xe601;</i>
+                            </a>
+                            <a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"
+                               href="javascript:;" title="警告">
+                                <i class="layui-icon">&#xe631;</i>
+                            </a>
+                            <a title="确认" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"
+                               class="ml-5" style="text-decoration:none">
+                                <i class="layui-icon">&#xe642;</i>
+                            </a>
+                            <!--<a title="删除" href="javascript:;" onclick="member_del(this,'1')"-->
+                               <!--style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe640;</i>-->
+                            <!--</a>-->
+                        </td>
+                    </tr>
+                {/volist}
+                </tbody>
+            </table>
+              <div style="text-align: center">{$list->render()}</div>
+            <!-- 右侧内容框架，更改从这里结束 -->
+          </div>
+        </div>
+        <!-- 右侧主体结束 -->
+    </div>
+    <!-- 中部结束 -->
+    <!-- 底部开始 -->
+
+    <!-- 底部结束 -->
+    <!-- 背景切换开始 -->
+
+    <!-- 背景切换结束 -->
+    <!-- 页面动态效果 -->
+    <script>
+        document.getElementById("logo").innerHTML="环保单位系统";
+        //批量删除提交
+             function delAll () {
+                layer.confirm('确认要删除吗？',function(index){
+                    //捉到所有被选中的，发异步进行删除
+                    layer.msg('删除成功', {icon: 1});
+                });
+             }
+            // 等级-增加
+            function level_add (title,url,id,w,h) {
+                x_admin_show(title,url,w,h); 
+            }
+            // 等级-编辑
+            function level_edit (title,url,id,w,h) {
+                x_admin_show(title,url,w,h); 
+            }
+           
+            /*等级-删除*/
+            function level_del(obj,id){
+                layer.confirm('确认要删除吗？',function(index){
+                    //发异步删除数据
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                });
+            }
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<div class="content">
+    <!-- 右侧内容框架，更改从这里开始 -->
+    <div class="yundan-title"><h1>污泥运单</h1></div>
+    <div class="yundan-content">
+        <form id="yundan" class="layui-form layui-form-pane">
+            <table class="table table-responsive" border="10px">
+                <thead>
+                <tr>
+                    <th>运单号</th>
+                    <th colspan="4" style="text-align: left;">
+                        <input type="text" id="yundanid" name="yundanid" value="{$content.yundanid}" readonly="" style="width:180px;">
+                    </th>
+                </tr>
+                <tr>
+                    <th class="col-3">序号</th>
+                    <th class="col-2">指标</th>
+                    <th class="col-3">数值</th>
+                    <th class="col-4">单位</th>
+                    <th class="col-5">备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="col-1" rowspan="3">1</th>
+                    <th class="col-2">污泥重量</th>
+                    <th class="col-3"><input type="text" id="c1" name="c1" value="{$content.c1}"></th>
+                    <th class="col-4">t</th>
+                    <th class="col-5"><input type="text" id="beizhu1" name="beizhu1" value="{$content.beizhu1}"></th>
+                </tr>
+                <tr>
+                    <th>出产时间</th>
+                    <th><input type="text" id="t1" name="t1" value="{$content.t1}"></th>
+                    <th>运输单位</th>
+                    <th><input type="text" id="t2" name="t2" value="{$content.t2}"></th>
+                </tr>
+                <tr>
+                    <th>目的地</th>
+                    <th><input type="text" id="t3" name="t3" value="{$content.t3}"></th>
+                    <th>污泥类型</th>
+                    <th><input type="text" id="t4" name="t4" value="{$content.t4}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">一</th>
+                    <th colspan="4">理化及生物学指标限值</th>
+                </tr>
+                <tr>
+                    <th class="col-1">2</th>
+                    <th class="col-2">PH</th>
+                    <th class="col-3"><input type="text" id="c2" name="c2" value="{$content.c2}"></th>
+                    <th class="col-4">无</th>
+                    <th class="col-5"><input type="text" id="beizhu2" name="beizhu2" value="{$content.beizhu2}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">3</th>
+                    <th class="col-2">含水率</th>
+                    <th class="col-3"><input type="text" id="c3" name="c3" value="{$content.c3}"></th>
+                    <th class="col-4">%</th>
+                    <th class="col-5"><input type="text" id="beizhu3" name="beizhu3" value="{$content.beizhu3}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">4</th>
+                    <th class="col-2">粪大肠菌群菌值</th>
+                    <th class="col-3"><input type="text" id="c4" name="c4" value="{$content.c4}"></th>
+                    <th class="col-4">无</th>
+                    <th class="col-5"><input type="text" id="beizhu4" name="beizhu4" value="{$content.beizhu4}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">5</th>
+                    <th class="col-2">细菌总数</th>
+                    <th class="col-3"><input type="text" id="c5" name="c5" value="{$content.c5}"></th>
+                    <th class="col-4">MPN/Kg干污泥</th>
+                    <th class="col-5"><input type="text" id="beizhu5" name="beizhu5" value="{$content.beizhu5}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">6</th>
+                    <th class="col-2">蛔虫卵死亡率</th>
+                    <th class="col-3"><input type="text" id="c6" name="c6" value="{$content.c6}"></th>
+                    <th class="col-4">%</th>
+                    <th class="col-5"><input type="text" id="beizhu6" name="beizhu6" value="{$content.beizhu6}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">二</th>
+                    <th colspan="4">污染物浓度及限值（干污泥）</th>
+                </tr>
+                <tr>
+                    <th class="col-1">7</th>
+                    <th class="col-2">总镉</th>
+                    <th class="col-3"><input type="text" id="c7" name="c7" value="{$content.c7}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu7" name="beizhu7" value="{$content.beizhu7}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">8</th>
+                    <th class="col-2">总汞</th>
+                    <th class="col-3"><input type="text" id="c8" name="c8" value="{$content.c8}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu8" name="beizhu8" value="{$content.beizhu8}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">9</th>
+                    <th class="col-2">总铅</th>
+                    <th class="col-3"><input type="text" id="c9" name="c9" value="{$content.c9}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu9" name="beizhu9" value="{$content.beizhu9}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">10</th>
+                    <th class="col-2">总铬</th>
+                    <th class="col-3"><input type="text" id="c10" name="c10" value="{$content.c10}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu10" name="beizhu10" value="{$content.beizhu10}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">11</th>
+                    <th class="col-2">总砷</th>
+                    <th class="col-3"><input type="text" id="c11" name="c11" value="{$content.c11}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu11" name="beizhu11" value="{$content.beizhu11}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">12</th>
+                    <th class="col-2">总铜</th>
+                    <th class="col-3"><input type="text" id="c12" name="c12"  value="{$content.c12}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu12" name="beizhu12" value="{$content.beizhu12}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">13</th>
+                    <th class="col-2">总锌</th>
+                    <th class="col-3"><input type="text" id="c13" name="c13"  value="{$content.c13}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu13" name="beizhu13" value="{$content.beizhu13}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">14</th>
+                    <th class="col-2">总镍</th>
+                    <th class="col-3"><input type="text" id="c14" name="c14"  value="{$content.c14}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu14" name="beizhu14" value="{$content.beizhu14}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">15</th>
+                    <th class="col-2">总硼</th>
+                    <th class="col-3"><input type="text" id="c15" name="c15"  value="{$content.c15}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu15" name="beizhu15" value="{$content.beizhu15}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">16</th>
+                    <th class="col-2">矿物油</th>
+                    <th class="col-3"><input type="text" id="c16" name="c16" value="{$content.c16}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu16" name="beizhu16" value="{$content.beizhu16}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">17</th>
+                    <th class="col-2">总氰化物</th>
+                    <th class="col-3"><input type="text" id="c17" name="c17" value="{$content.c17}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu17" name="beizhu17" value="{$content.beizhu17}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">18</th>
+                    <th class="col-2">苯并(a)芘</th>
+                    <th class="col-3"><input type="text" id="c18" name="c18" value="{$content.c18}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu18" name="beizhu18" value="{$content.beizhu18}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">19</th>
+                    <th class="col-2">多环芳烃PAHs</th>
+                    <th class="col-3"><input type="text" id="c19" name="c19" value="{$content.c19}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu19" name="beizhu19" value="{$content.beizhu19}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">20</th>
+                    <th class="col-2">可吸附有机卤化物                         （AOX（以Cl计））</th>
+                    <th class="col-3"><input type="text" id="c20" name="c20" value="{$content.c20}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu20" name="beizhu20" value="{$content.beizhu20}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">21</th>
+                    <th class="col-2">多氯联苯</th>
+                    <th class="col-3"><input type="text" id="c21" name="c21" value="{$content.c21}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu21" name="beizhu21" value="{$content.beizhu21}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">22</th>
+                    <th class="col-2">挥发酚</th>
+                    <th class="col-3"><input type="text" id="c22" name="c22" value="{$content.c22}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu22" name="beizhu22" value="{$content.beizhu22}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">三</th>
+                    <th colspan="4">养分指标及限值</th>
+                </tr>
+                <tr>
+                    <th class="col-1">23</th>
+                    <th class="col-2">有机质含量</th>
+                    <th class="col-3"><input type="text" id="c23" name="c23" value="{$content.c23}"></th>
+                    <th class="col-4">%</th>
+                    <th class="col-5"><input type="text" id="beizhu23" name="beizhu23" value="{$content.beizhu23}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">24</th>
+                    <th class="col-2">氮磷钾（N+P2O5+k2O）含量</th>
+                    <th class="col-3"><input type="text" id="c24" name="c24" value="{$content.c24}"></th>
+                    <th class="col-4">%</th>
+                    <th class="col-5"><input type="text" id="beizhu24" name="beizhu24" value="{$content.beizhu24}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">四</th>
+                    <th colspan="4">其他</th>
+                </tr>
+                <tr>
+                    <th class="col-1">25</th>
+                    <th class="col-2">种子发芽数</th>
+                    <th class="col-3"><input type="text" id="c25" name="c25" value="{$content.c25}"></th>
+                    <th class="col-4">%</th>
+                    <th class="col-5"><input type="text" id="beizhu25" name="beizhu25" value="{$content.beizhu25}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">26</th>
+                    <th class="col-2">外观和嗅觉</th>
+                    <th class="col-3"><input type="text" id="c26" name="c26" value="{$content.c26}"></th>
+                    <th class="col-4"></th>
+                    <th class="col-5"><input type="text" id="beizhu26" name="beizhu26" value="{$content.beizhu26}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">27</th>
+                    <th class="col-2">粒径</th>
+                    <th class="col-3"><input type="text" id="c27" name="c27" value="{$content.c27}"></th>
+                    <th class="col-4">mm</th>
+                    <th class="col-5"><input type="text" id="beizhu27" name="beizhu27" value="{$content.beizhu27}"></th>
+                </tr>
+                </tbody>
+            </table>
+            <div class="shenbao">
+                <button id="savebtn" class="btn btn-info marginleft40" type="button">保存</button>
+            </div>
+        </form>
+    </div>
+    <!-- 右侧内容框架，更改从这里结束 -->
+</div>
+    <script>
+        $(function () {
+            $("#savebtn").on('click',function () {
+                //表单使用ajax提交
+                $.ajax({
+                    type:'POST',
+                    url:"{:url('user2/save2')}",//调用user2控制器的save方法
+                    data:$("#yundan").serialize(),//数据来源于表单，并对数据进行序列化,提交表单
+                    dataType:'json',//数据类型
+                    success:function (data) {
+                        if(data.status==1){
+                            alert(data.message);
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        }else {
+                            alert(data.message);
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        }
+                    },
+                    error:function () {
+                        alert("服务器出错！");
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

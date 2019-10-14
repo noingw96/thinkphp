@@ -1,0 +1,11 @@
+﻿(1)0.1+0.2>0.3?
+https://segmentfault.com/a/1190000012175422
+(2）块级元素如何让其内部文字垂直?  css3新属性calc 设立top和left百分比
+ 或者设立body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+https://blog.csdn.net/qq_38453189/article/details/71169909
+https://www.cnblogs.com/xuyuntao/articles/6391728.html
+(3)了解几种盒子模型

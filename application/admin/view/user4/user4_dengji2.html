@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<!-- 顶部开始 -->
+{include file='public/nav'/}
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<div class="wrapper">
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li class="list" id="nav1">
+                    <a href="{:url('admin/user4/index')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        地块信息登记
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{:url('admin/user4/index')}">
+                                <i class="iconfont">&nbsp;&nbsp;&nbsp;</i>
+                                填写
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('admin/user4/index_dengji2')}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                查看
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user4/index_query')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user4/index_shenhe')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单审核
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user4/index_confirm')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单确认
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        //初始化让列表展开
+        window.onload=function () {
+            var btn= $('.left-nav #nav1 ');
+            btn.addClass('open');
+            btn.find('.nav_right').html('&#xe6a6;');
+            btn.children('.sub-menu').slideDown();
+        }
+    </script>
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+            <form class="layui-form xbs">
+                <div class="layui-form-pane">
+                    <div class="layui-form-item" style="display: inline-block;">
+                        <div class="layui-input-inline">
+                            <input type="text" name="username"  placeholder="请输入运单号" autocomplete="off" class="layui-input">
+                        </div>
+                        <button id="querybtn" class="btn btn-query3" type="button">查询</button>
+                    </div>
+                </div>
+            </form>
+            <div class="query-result">
+                <div class="query_left">
+                    <table class="table table-responsive">
+                        <thead>
+                        <tr>
+                            <th colspan="1">地块编号</th>
+                            <th colspan="1">土壤类型</th>
+                            <th colspan="1">植被类型</th>
+                            <th colspan="1">总面积/亩</th>
+                            <th colspan="1">污泥现容量/总容量（干基/t）</th>
+                            <th colspan="2">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody-result" class="the_table">
+                        {volist name='list' id='vo'}
+                        <tr>
+                            <td class="the_id">{$vo.yundanid}</td>
+                            <td>{$vo.t1}</td>
+                            <td>{$vo.t2}</td>
+                            <td>{$vo.t3}</td>
+                            <td>{$vo.t5}/{$vo.t4}</td>
+                            <td> <a title="撤回" href="javascript:;" onclick="level_del(this,'{$vo.yundanid}')">
+                                撤回
+                            </a></td>
+                            <td><a title="修改" href="javascript:;" onclick=level_edit("编辑","{:url('admin/user4/edit')}"+"?id="+"{$vo.yundanid}",4,1300,600)>
+                                修改
+                            </a></td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                    <div style="text-align: center">{$list->render()}</div>
+                </div>
+                <div class="query_right2">
+                    <img src="__STATIC__/images/gis1.jpg" id="gis-img" style="width: 440px;border: 7px ridge #aab5b7;">
+                </div>
+            </div>
+            <!-- 右侧内容框架，更改从这里结束 -->
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+</div>
+<!-- 中部结束 -->
+<script>
+    document.getElementById("logo").innerHTML="消纳单位系统";
+
+    //切图
+    $(".the_table tr").each(function (i) {
+        $(this).attr("data-id",i+1);
+    })
+
+
+    $(document).on("click",".the_id",function () {
+        var position = $(this).parent().attr("data-id");
+        if(position%2==1){
+            $("#gis-img").attr("src","__STATIC__/images/gis2.jpg");
+        }else{
+            $("#gis-img").attr("src","__STATIC__/images/gis3.jpg");
+        }
+    })
+    $(document).on("mouseout",".the_id",function () {
+        $("#gis-img").attr("src","__STATIC__/images/gis1.jpg");
+    })
+
+
+    // 运单-编辑
+    function level_edit (title,url,id,w,h) {
+        x_admin_show(title,url,w,h);
+    }
+    //运单-删除
+    function level_del(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            //发异步删除数据
+            $.get("{:url('admin/user4/delete')}",{id:id});
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!',{icon:1,time:1000});
+//            window.location.href="{:url('user4/index_dengji2')}";//成功加载user4控制器的index_dengji2
+        });
+    }
+</script>
+{include file='public/footer'/}

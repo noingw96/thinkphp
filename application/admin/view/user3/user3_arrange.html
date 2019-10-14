@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<div class="content">
+    <!-- 右侧内容框架，更改从这里开始 -->
+    <div class="arrange-title"><h1>运单编号{$yundanid}</h1></div>
+    <div class="yundan-content table-margin">
+        <form id="yundan" class="layui-form layui-form-pane">
+            <div class="arrange-result">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>车牌号</th>
+                        <th>车主姓名</th>
+                        <th>当前状态</th>
+                        <th>选择</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-result">
+                    {volist name="list" id="vo"}
+                    <tr>
+                        <td>{$vo.car_id}</td>
+                        <td>{$vo.people_name}</td>
+                        <td>{$vo.now}</td>
+                        <td><input type="radio" name="check" value="{$vo.car_id}" title=""></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+            <div class="user3_save">
+                <button id="savebtn" class="btn btn-info" type="button" onclick="saveCar('{$yundanid}')">保存</button>
+            </div>
+        </form>
+    </div>
+    <!-- 右侧内容框架，更改从这里结束 -->
+</div>
+    <script>
+        function saveCar(id) {
+            var check = $('input:radio[name="check"]:checked').val();
+            if(check==null){
+                alert("请先进行选择");
+            }else{
+                alert("分派成功");
+                $.get("{:url('admin/user3/save')}",{id:id,car_id:check});
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            }
+        }
+    </script>
+</body>
+</html>

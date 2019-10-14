@@ -1,0 +1,5 @@
+BootCDN   前端常用开发的cdn
+daneden.github.io/animate.css/    查看animate动画效果
+bootstrap模板网站
+http://bootswatch.com/
+http://bootswatch.bootku.com/

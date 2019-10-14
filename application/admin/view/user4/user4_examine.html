@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<div class="content">
+    <!-- 右侧内容框架，更改从这里开始 -->
+    <div class="yundan-title" style="padding-left: 20px;"><h1 style="color: red;letter-spacing: 28px;font-size: 30px;font-weight: bolder;font-family: serif;">运单审核</h1></div>
+    <div class="yundan-content">
+        <form id="yundan" >
+            <!--<table class="table table-responsive" border="10px">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th colspan="1">污泥运单编号</th>-->
+                    <!--<th colspan="1">出产时间</th>-->
+                    <!--<th colspan="1">出产单位</th>-->
+                    <!--<th colspan="1">处置地</th>-->
+                    <!--<th colspan="1">污泥类型</th>-->
+                    <!--<th colspan="1">污泥量/现土壤容量（千基/t）</th>-->
+                    <!--<th colspan="1">距离（km）</th>-->
+                    <!--<th colspan="1">选择</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody style="text-align: center">-->
+                <!--<tr>-->
+                    <!--<td>201902040114</td>-->
+                    <!--<td>2019.2.4</td>-->
+                    <!--<td>产泥单位01</td>-->
+                    <!--<td>地块012</td>-->
+                    <!--<td>热水解泥污</td>-->
+                    <!--<td>0.4/1.5</td>-->
+                    <!--<td>32.2</td>-->
+                    <!--<td><input type="radio" name="check"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>201902040114</td>-->
+                    <!--<td>2019.2.5</td>-->
+                    <!--<td>产泥单位01</td>-->
+                    <!--<td>地块004</td>-->
+                    <!--<td>热水解泥污</td>-->
+                    <!--<td>0.4/0.9</td>-->
+                    <!--<td>25.7</td>-->
+                    <!--<td><input type="radio" name="check"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>201902040114</td>-->
+                    <!--<td>2019.2.2</td>-->
+                    <!--<td>产泥单位01</td>-->
+                    <!--<td>地块006</td>-->
+                    <!--<td>热水解泥污</td>-->
+                    <!--<td>0.4/0.9</td>-->
+                    <!--<td>27.8</td>-->
+                    <!--<td><input type="radio" name="check"></td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+            <table class="table table-responsive" border="10px">
+                <thead>
+                <tr>
+                    <th colspan="1">污泥运单编号</th>
+                    <th colspan="1">出产时间</th>
+                    <th colspan="1">出产单位</th>
+                    <th colspan="1">处置地</th>
+                    <th colspan="1">污泥类型</th>
+                    <th colspan="1">污泥量/现土壤容量（千基/t）</th>
+                    <th colspan="1">距离（km）</th>
+                    <th colspan="1">选择</th>
+                </tr>
+                </thead>
+                <tbody id="tbody-result" class="the_table">
+                {volist name='list' id='vo'}
+                <tr>
+                    <td>{$content.yundanid}</td>
+                    <td>{$content.t1}</td>
+                    <td>{$content.belong}</td>
+                    <td>{$vo.yundanid}</td>
+                    <td>{$content.t4}</td>
+                    <td>{$vo.t5}/{$vo.t4}</td>
+                    <td>{$vo.kilo}</td>
+                    <td><input type="radio" name="check"></td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+            <div style="text-align: center">{$list->render()}</div>
+            <div class="shenbao" id="{$content.yundanid}">
+                <button id="savebtn" class="btn btn-info marginleft40" type="button" onclick="examine('{$content.yundanid}')">审核确认</button>
+            </div>
+        </form>
+    </div>
+    <!-- 右侧内容框架，更改从这里结束 -->
+</div>
+    <script>
+        function examine(id) {
+            var check = $('input:radio[name="check"]:checked').val();
+            if(check==null){
+                alert("请先进行选择再确认！");
+            }else {
+                $.get("{:url('admin/user4/examine_confirm')}",{id:id});
+                alert("审核通过");
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            }
+        }
+//        $("#savebtn").on('click',function () {
+//            var check = $('input:radio[name="check"]:checked').val();
+//            if(check==null){
+//                alert("请先进行选择再确认！");
+//            }else {
+////                alert(id);
+//                alert("审核通过");
+//                var index = parent.layer.getFrameIndex(window.name);
+//                parent.layer.close(index);
+//            }
+//        })
+//        $(function () {
+//            $("#savebtn").on('click',function () {
+//                //表单使用ajax提交
+//                $.ajax({
+//                    type:'POST',
+//                    url:"{:url('user1/save')}",//调用user1控制器的save方法
+//                    data:$("#yundan").serialize(),//数据来源于表单，并对数据进行序列化,提交表单
+//                    dataType:'json',//数据类型
+//                    success:function (data) {
+//                        if(data.status==1){
+//                            alert(data.message);
+//                            var index = parent.layer.getFrameIndex(window.name);
+//                            parent.layer.close(index);
+////                            window.location.href="{:url('user1/index_query')}";//成功加载user1控制器的index_query
+//                        }else {
+//                            alert(data.message);
+//                            var index = parent.layer.getFrameIndex(window.name);
+//                            parent.layer.close(index);
+//                        }
+//                    },
+//                    error:function () {
+//                        alert("服务器出错！");
+//                    }
+//                })
+//            })
+//        })
+    </script>
+</body>
+</html>

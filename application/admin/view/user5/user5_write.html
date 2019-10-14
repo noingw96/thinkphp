@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<!-- 顶部开始 -->
+{include file='public/nav'/}
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<div class="wrapper">
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li class="list">
+                    <a href="{:url('admin/user5/index')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥监理单填写
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user5/index_query')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥监理单查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+            <form id="form5" enctype="multipart/form-data" action="{:url('admin/user5/create')}" method="post" class="layui-form layui-form-pane">
+                <div class="jianli-title"><strong>监理单</strong></div>
+                <div class="jianli-content">
+                    <div class="jianli-id"><label>运单号</label></div>
+                    <div><input type="text" name="jianliid" id="jianliid" placeholder="请输入运单号" autocomplete="off"></div>
+                    <div class="jianli-id"><label>监理报告</label></div>
+                    <div>
+                        <input type="text" name="temp" id="temp">
+                        <input type='button' value='选择文件' name="btn" id="btn"/>
+                        <input type="file" name="report_file" id="report_file" value="" class="report_file"
+                        onchange="document.getElementById('temp').value=this.value">
+                    </div>
+                </div>
+                <div class="shenbao2">
+                    <button type="submit" id="shenbaobtn" class="btn btn-info">提交</button>
+                </div>
+            </form>
+            <!-- 右侧内容框架，更改从这里结束 -->
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+</div>
+<!-- 中部结束 -->
+<script>
+    document.getElementById("logo").innerHTML="监理单位系统";
+    document.getElementById("temp").value="";
+    //检验填写的完整性
+    $('#shenbaobtn').on('mouseover',function () {
+        var file_name = $('#report_file').val();
+        var number = $('#jianliid').val();
+        if(number == ""){
+            alert("未填写运单号！");
+        }else {
+            if(file_name == ""){
+                alert("未上传报告！");
+            }
+        }
+    })
+</script>
+{include file='public/footer'/}

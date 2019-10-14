@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<!-- 顶部开始 -->
+{include file='public/nav'/}
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<div class="wrapper">
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li class="list">
+                    <a href="{:url('admin/user3/index')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        车辆人员登记
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user3/index_query')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user3/index_car')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        运输车辆查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user3/index_confirm')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单确认
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+            <form class="layui-form xbs">
+                <div class="layui-form-pane">
+                    <div class="layui-form-item" style="display: inline-block;">
+                        <div class="layui-input-inline">
+                            <input type="text" name="username"  placeholder="请输入运单号" autocomplete="off" class="layui-input">
+                        </div>
+                        <button id="querybtn" class="btn btn-query3" type="button">查询</button>
+                    </div>
+                </div>
+            </form>
+            <div class="query-result">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th colspan="1">污泥批次编号</th>
+                        <th colspan="1">出产时间</th>
+                        <th colspan="1">运输单位</th>
+                        <th colspan="1">来源地</th>
+                        <th colspan="1">污泥类型</th>
+                        <th colspan="1">污泥总重/t</th>
+                        <th colspan="2">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-result">
+                    {volist name='list' id='vo'}
+                    <tr>
+                        <td>{$vo.yundanid}</td>
+                        <td>{$vo.t1}</td>
+                        <td>{$vo.belong}</td>
+                        <td>{$vo.t3}</td>
+                        <td>{$vo.t4}</td>
+                        <td>{$vo.c1}</td>
+                        <td class="col-7">
+                            <div class="file-box">
+                                <form id="{$vo.yundanid}form">
+                                    <input type='text' name='{$vo.yundanid}text' id='{$vo.yundanid}text' class='txt' />
+                                    <input type='button' class='btn1' value='浏览...' />
+                                    <input type="file"  class="file" id="{$vo.yundanid}file" size="28" name="{$vo.yundanid}file"
+                                           onchange='document.getElementById("{$vo.yundanid}text").value=this.value'/>
+                                    <input type="button" name="submit" id="{$vo.yundanid}" class="btn2" value="上传交接信息" />
+                                </form>
+                            </div>
+                        </td>
+                        <td class="col-1"> <a title="确认" href="javascript:;" onclick="level_confirm(this,'{$vo.yundanid}')">确认</a></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div style="text-align: center">{$list->render()}</div>
+            </div>
+            <!-- 右侧内容框架，更改从这里结束 -->
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+</div>
+<!-- 中部结束 -->
+<script>
+    document.getElementById("logo").innerHTML="运输单位系统";
+</script>
+{include file='public/footer'/}

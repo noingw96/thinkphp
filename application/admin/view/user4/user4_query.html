@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<!-- 顶部开始 -->
+{include file='public/nav'/}
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<div class="wrapper">
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li class="list" id="nav1">
+                    <a href="{:url('admin/user4/index')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        地块信息登记
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{:url('admin/user4/index')}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                填写
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:url('admin/user4/index_dengji2')}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                查看
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user4/index_query')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单查询
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user4/index_shenhe')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单审核
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user4/index_confirm')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单确认
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+            <form class="layui-form xbs">
+                <div class="layui-form-pane">
+                    <div class="layui-form-item" style="display: inline-block;">
+                        <div class="layui-input-inline">
+                            <input type="text" name="username"  placeholder="请输入运单号" autocomplete="off" class="layui-input">
+                        </div>
+                        <button id="querybtn" class="btn btn-query3" type="button">查询</button>
+                    </div>
+                </div>
+            </form>
+            <div class="query-result">
+                <!--<table class="table table-responsive">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th colspan="1">污泥批次编号</th>-->
+                        <!--<th colspan="1">出产时间</th>-->
+                        <!--<th colspan="1">运输单位</th>-->
+                        <!--<th colspan="1">来源地</th>-->
+                        <!--<th colspan="1">处置地</th>-->
+                        <!--<th colspan="1">污泥类型</th>-->
+                        <!--<th colspan="1">污泥总重/t</th>-->
+                        <!--<th colspan="1">操作</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody id="tbody-result" class="the_table">-->
+                    <!--<tr>-->
+                        <!--<td>201902040100414</td>-->
+                        <!--<td>2019.2.4</td>-->
+                        <!--<td>运输单位01</td>-->
+                        <!--<td>产泥单位01</td>-->
+                        <!--<td>地块004</td>-->
+                        <!--<td>干化颗粒</td>-->
+                        <!--<td>100</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>201902050101224</td>-->
+                        <!--<td>2019.2.5</td>-->
+                        <!--<td>运输单位02</td>-->
+                        <!--<td>产泥单位02</td>-->
+                        <!--<td>地块012</td>-->
+                        <!--<td>脱水泥饼</td>-->
+                        <!--<td>200</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>201902150101214</td>-->
+                        <!--<td>2019.2.15</td>-->
+                        <!--<td>运输单位01</td>-->
+                        <!--<td>产泥单位02</td>-->
+                        <!--<td>地块012</td>-->
+                        <!--<td>热水解污泥</td>-->
+                        <!--<td>150</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>201902250101324</td>-->
+                        <!--<td>2019.2.25</td>-->
+                        <!--<td>运输单位02</td>-->
+                        <!--<td>产泥单位03</td>-->
+                        <!--<td>地块013</td>-->
+                        <!--<td>脱水泥饼</td>-->
+                        <!--<td>120</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th colspan="1">污泥批次编号</th>
+                        <th colspan="1">出产时间</th>
+                        <th colspan="1">运输单位</th>
+                        <th colspan="1">来源地</th>
+                        <th colspan="1">处置地</th>
+                        <th colspan="1">污泥类型</th>
+                        <th colspan="1">污泥总重/t</th>
+                        <th colspan="1">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-result">
+                    {volist name='list' id='vo'}
+                    <tr>
+                        <td>{$vo.yundanid}</td>
+                        <td>{$vo.t1}</td>
+                        <td>{$vo.t2}</td>
+                        <td>{$vo.belong}</td>
+                        <td>{$vo.t3}</td>
+                        <td>{$vo.t4}</td>
+                        <td>{$vo.c1}</td>
+                        <td><a title="报错" href="javascript:;" onclick=level_report("报备单","{:url('admin/user4/report')}"+"?id="+"{$vo.yundanid}",4,"",600)>报错</a></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div style="text-align: center">{$list->render()}</div>
+            </div>
+            <!-- 右侧内容框架，更改从这里结束 -->
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+</div>
+<!-- 中部结束 -->
+<script>
+    document.getElementById("logo").innerHTML="消纳单位系统";
+    function level_edit (title,url,id,w,h) {
+        x_admin_show(title,url,w,h);
+    }
+    function level_report (title,url,id,w,h) {
+        x_admin_show(title,url,w,h);
+    }
+</script>
+{include file='public/footer'/}

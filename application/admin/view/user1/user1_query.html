@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<!-- 顶部开始 -->
+{include file='public/nav'/}
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<div class="wrapper">
+    <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
+                <li class="list">
+                    <a href="{:url('admin/user1/index')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单申报
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user1/index_query')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单查询
+                        <i class="iconfont nav_right">&#xe6a7;</i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user1/index_car')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        运输车辆查询
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="{:url('admin/user1/index_confirm')}">
+                        <i class="iconfont">&#xe70b;</i>
+                        污泥运单确认
+                        <i class="iconfont nav_right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="content">
+            <!-- 右侧内容框架，更改从这里开始 -->
+            <!--搜索框-->
+            <div class="query-content">
+                <form id="yundanhao_query">
+                    <span class="marginright10">运单号</span>
+                    <input type="text" id="query_content" name="query_content" placeholder="请输入运单号">
+                    <button id="querybtn" class="btn btn-query marginleft40" type="button">查询</button>
+                </form>
+            </div>
+            <!--搜索结果以table展示-->
+            <div class="query-result">
+                <!--<table class="table table-responsive">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th colspan="1">运单号</th>-->
+                        <!--<th colspan="1">出产时间</th>-->
+                        <!--<th colspan="1">运输单位</th>-->
+                        <!--<th colspan="1">目的地</th>-->
+                        <!--<th colspan="1">污泥类型</th>-->
+                        <!--<th colspan="1">污泥总重/t</th>-->
+                        <!--<th colspan="1">操作</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody id="tbody-result" class="the_table">-->
+                    <!--<tr>-->
+                        <!--<td>201902040100414</td>-->
+                        <!--<td>2019.2.4</td>-->
+                        <!--<td>运输单位01</td>-->
+                        <!--<td>地块004</td>-->
+                        <!--<td>干化颗粒</td>-->
+                        <!--<td>100</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a title="撤回" href="javascript:;" onclick="member_del(this,'1')"-->
+                               <!--style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe640;</i>-->
+                            <!--</a>-->
+                            <!--<a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"-->
+                               <!--class="ml-5" style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe642;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="未确认">-->
+                                <!--<i class="layui-icon">&#xe601;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>20190205010212</td>-->
+                        <!--<td>2019.2.5</td>-->
+                        <!--<td>运输单位02</td>-->
+                        <!--<td>处理单位02</td>-->
+                        <!--<td>脱水泥饼</td>-->
+                        <!--<td>200</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a title="撤回" href="javascript:;" onclick="member_del(this,'1')"-->
+                               <!--style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe640;</i>-->
+                            <!--</a>-->
+                            <!--<a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"-->
+                               <!--class="ml-5" style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe642;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="未确认">-->
+                                <!--<i class="layui-icon">&#xe601;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>201902150101214</td>-->
+                        <!--<td>2019.2.15</td>-->
+                        <!--<td>运输单位01</td>-->
+                        <!--<td>地块012</td>-->
+                        <!--<td>热水解污泥</td>-->
+                        <!--<td>150</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a title="撤回" href="javascript:;" onclick="member_del(this,'1')"-->
+                               <!--style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe640;</i>-->
+                            <!--</a>-->
+                            <!--<a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"-->
+                               <!--class="ml-5" style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe642;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="未确认">-->
+                                <!--<i class="layui-icon">&#xe601;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>20190225010312</td>-->
+                        <!--<td>2019.2.25</td>-->
+                        <!--<td>运输单位02</td>-->
+                        <!--<td>处理单位03</td>-->
+                        <!--<td>脱水泥饼</td>-->
+                        <!--<td>120</td>-->
+                        <!--<td class="td-manage">-->
+                            <!--<a title="撤回" href="javascript:;" onclick="member_del(this,'1')"-->
+                               <!--style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe640;</i>-->
+                            <!--</a>-->
+                            <!--<a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"-->
+                               <!--class="ml-5" style="text-decoration:none">-->
+                                <!--<i class="layui-icon">&#xe642;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"-->
+                               <!--href="javascript:;" title="报错">-->
+                                <!--<i class="layui-icon">&#xe631;</i>-->
+                            <!--</a>-->
+                            <!--<a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="未确认">-->
+                                <!--<i class="layui-icon">&#xe601;</i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                <!--</table>-->
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th colspan="1">运单号</th>
+                        <th colspan="1">出产时间</th>
+                        <th colspan="1">运输单位</th>
+                        <th colspan="1">目的地</th>
+                        <th colspan="1">污泥类型</th>
+                        <th colspan="1">污泥总重/t</th>
+                        <th colspan="4">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-result" class="the_table">
+                    {volist name='list' id='vo'}
+                    <tr>
+                        <td>{$vo.yundanid}</td>
+                        <td>{$vo.t1}</td>
+                        <td>{$vo.t2}</td>
+                        <td>{$vo.t3}</td>
+                        <td>{$vo.t4}</td>
+                        <td>{$vo.c1}</td>
+                        <td> <a title="撤回" href="javascript:;" onclick="level_del(this,'{$vo.yundanid}')">
+                            撤回
+                        </a></td>
+                        <td><a title="修改" href="javascript:;" onclick=level_edit("编辑","{:url('admin/user1/edit')}"+"?id="+"{$vo.yundanid}",4,"",600)>
+                            修改
+                        </a></td>
+                        <td><a title="报错" href="javascript:;" onclick=level_report("报备单","{:url('admin/user1/report')}"+"?id="+"{$vo.yundanid}",4,"",600)>报错</a></td>
+                        <td><a href=\"#\">{$vo.status}</a></td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div style="text-align: center">{$list->render()}</div>
+            </div>
+            <!-- 右侧内容框架，更改从这里结束 -->
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+</div>
+<!-- 中部结束 -->
+<script>
+    document.getElementById("logo").innerHTML="产泥单位系统";
+    $(function () {
+        $("#querybtn").on('click',function () {
+            //表单使用ajax提交
+            var yundanhao = $('#query_content').val();
+            var tbody = document.getElementById("tbody-result")
+            //查询功能
+            $.ajax({
+                type:'POST',
+                url:"{:url('admin/user1/show_result')}",//调用user1控制器的show_result方法
+                data:$("#yundanhao_query").serialize(),//数据来源于表单，并对数据进行序列化,提交表单
+                dataType:'json',//数据类型
+                success:function (data) {
+                    if(data.status==1){
+                        var str = "";
+                        var msg = data.newdata;
+                        str +="<tr>"+
+                            "<td>"+yundanhao+"</td>"+
+                            "<td>污泥重量："+msg.c1+"</td>"+
+                            "<td>PH："+msg.c2+"</td>"+
+                            "<td>含水率："+msg.c3+"%</td>"+
+                            "<td><a title=\"撤回\" href=\"javascript:;\" onclick=level_del(this,'"+yundanhao+"')>撤回"+
+                            "</a></td><td><a title=\"修改\" href=\"javascript:;\" onclick=level_edit(\"编辑\",\"{:url('admin/user1/edit')}\"+\"?id=\"+"+yundanhao+",4,\"\",600)>"+
+                            "修改</a></td><td><a title=\"修改\" href=\"javascript:;\" onclick=level_report(\"编辑\",\"{:url('admin/user1/report')}\"+\"?id=\"+"+yundanhao+",4,\"\",600)>"+
+                            "报错</a></td><td><a href=\"#\">"+msg.status+"</a></td>"+
+                            "</tr>"
+                        tbody.innerHTML = str;
+                    }else {
+                        alert(data.message);
+                    }
+                },
+                error:function () {
+                    alert("服务器出错！");
+                }
+            })
+        })
+        //显示所有运单
+//        $(function () {
+//            var tbody = document.getElementById("tbody-result")
+//            $.ajax({
+//                type:'POST',
+//                url:"{:url('admin/user1/show_all')}",//调用user1控制器的show_all方法
+//                data:null,//数据为空,提交表单
+//                dataType:'json',//数据类型
+//                success:function (data) {
+//                    if(data.status==1){
+//                        var str = "";
+//                        var msg = data.newdata;
+//                        for(i in msg){
+//                            str +="<tr>"+
+//                            "<td>"+msg[i].yundanid+"</td>"+
+//                            "<td>污泥重量："+msg[i].c1+"</td>"+
+//                            "<td>PH："+msg[i].c2+"</td>"+
+//                            "<td>含水率："+msg[i].c3+"%</td>"+
+//                            "<td><a href=\"#\">撤回</a></td>"+
+//                            "<td><a href=\"#\">修改</a></td>"+
+//                            "<td><a href=\"#\">报错</a></td>"+
+//                            "<td><a href=\"#\">未确认</a></td>"+
+//                            "</tr>"
+//                        }
+//                        tbody.innerHTML = str;
+//                    }else {
+//                        alert(data.message);
+//                        alert(0);
+//                    }
+//                },
+//                error:function () {
+//                    alert("服务器出错！");
+//                }
+//            })
+//        })
+    })
+//    切图
+    var first = $(".the_table").find("tr:first-child").find("td:first-child");
+    $(first).on("click",function () {
+//        alert(first.text());
+        $("#gis-img").attr('src','__STATIC__/images/gps1-2.jpg');
+    })
+    $(first).on("mouseout",function () {
+        $("#gis-img").attr('src','__STATIC__/images/gps.jpg');
+    })
+    var second = $(".the_table").find("tr:first-child").next().find("td:first-child");
+    $(second).on("click",function () {
+        $("#gis-img").attr('src','__STATIC__/images/gps1-4.jpg');
+    })
+    $(second).on("mouseout",function () {
+        $("#gis-img").attr('src','__STATIC__/images/gps.jpg');
+    })
+    // 运单-编辑
+    function level_edit (title,url,id,w,h) {
+        x_admin_show(title,url,w,h);
+    }
+    // 运单-报备
+    function level_report (title,url,id,w,h) {
+        x_admin_show(title,url,w,h);
+    }
+    //运单-删除
+    function level_del(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            //发异步删除数据
+            $.get("{:url('admin/user1/delete')}",{id:id});
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!',{icon:1,time:1000});
+            window.location.href="{:url('user1/index_query')}";//成功加载user1控制器的index_query
+        });
+    }
+</script>
+{include file='public/footer'/}

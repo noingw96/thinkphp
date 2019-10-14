@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+{include file='public/header'/}
+<body>
+<div class="content">
+    <!-- 右侧内容框架，更改从这里开始 -->
+    <div class="zhibiao-title"><h1>土壤环境容量指标表</h1></div>
+    <div class="zhibiao-content">
+        <form id="zhibiao" class="layui-form layui-form-pane">
+            <div class="quyang">
+                <span>测样地块:</span><input type="text" id="t1" name="t1" value="{$content.t1}">
+                <span style="margin-left: 20px">植被类型:</span><input type="text" id="t2" name="t2" value="{$content.t2}">
+                <span style="margin-left: 20px">总面积:</span><input type="text" id="t3" name="t3" value="{$content.t3}">
+                <span style="margin-left: 20px">总容量:</span><input type="text" id="t4" name="t4" value="{$content.t4}">
+            </div>
+            <table class="table table-responsive" border="10px">
+                <thead>
+                <tr>
+                    <th>运单号</th>
+                    <th colspan="4" style="text-align: left;">
+                        <input type="text" id="yundanid" name="yundanid" value="{$content.yundanid}" readonly="" style="width:180px;">
+                    </th>
+                </tr>
+                <tr>
+                    <th class="col-3">序号</th>
+                    <th class="col-2">指标</th>
+                    <th class="col-3">数值</th>
+                    <th class="col-4">单位</th>
+                    <th class="col-5">备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th class="col-1">1</th>
+                    <th class="col-2">粪大肠菌群菌值</th>
+                    <th class="col-3"><input type="text" id="k1" name="k1" value="{$content.k1}"></th>
+                    <th class="col-4">无</th>
+                    <th class="col-5"><input type="text" id="beizhu1" name="beizhu1" value="{$content.beizhu1}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">2</th>
+                    <th class="col-2">细菌总数</th>
+                    <th class="col-3"><input type="text" id="k2" name="k2" value="{$content.k2}"></th>
+                    <th class="col-4">MPN/Kg干污泥</th>
+                    <th class="col-5"><input type="text" id="beizhu2" name="beizhu2" value="{$content.beizhu2}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">3</th>
+                    <th class="col-2">总镉</th>
+                    <th class="col-3"><input type="text" id="k3" name="k3" value="{$content.k3}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu3" name="beizhu3" value="{$content.beizhu3}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">4</th>
+                    <th class="col-2">总汞</th>
+                    <th class="col-3"><input type="text" id="k4" name="k4" value="{$content.k4}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu4" name="beizhu4" value="{$content.beizhu4}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">5</th>
+                    <th class="col-2">总铅</th>
+                    <th class="col-3"><input type="text" id="k5" name="k5" value="{$content.k5}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu5" name="beizhu5" value="{$content.beizhu5}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">6</th>
+                    <th class="col-2">总铬</th>
+                    <th class="col-3"><input type="text" id="k6" name="k6" value="{$content.k6}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu6" name="beizhu6" value="{$content.beizhu6}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">7</th>
+                    <th class="col-2">总砷</th>
+                    <th class="col-3"><input type="text" id="k7" name="k7" value="{$content.k7}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu7" name="beizhu7" value="{$content.beizhu7}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">8</th>
+                    <th class="col-2">总铜</th>
+                    <th class="col-3"><input type="text" id="k8" name="k8" value="{$content.k8}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu8" name="beizhu8" value="{$content.beizhu8}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">9</th>
+                    <th class="col-2">总锌</th>
+                    <th class="col-3"><input type="text" id="k9" name="k9" value="{$content.k9}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu9" name="beizhu9" value="{$content.beizhu9}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">10</th>
+                    <th class="col-2">总镍</th>
+                    <th class="col-3"><input type="text" id="k10" name="k10" value="{$content.k10}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu10" name="beizhu10" value="{$content.beizhu10}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">11</th>
+                    <th class="col-2">总硼</th>
+                    <th class="col-3"><input type="text" id="k11" name="k11" value="{$content.k11}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu11" name="beizhu11" value="{$content.beizhu11}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">12</th>
+                    <th class="col-2">矿物油</th>
+                    <th class="col-3"><input type="text" id="k12" name="k12" value="{$content.k12}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu12" name="beizhu12" value="{$content.beizhu12}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">13</th>
+                    <th class="col-2">多环芳烃PAHs</th>
+                    <th class="col-3"><input type="text" id="k13" name="k13" value="{$content.k13}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu13" name="beizhu13" value="{$content.beizhu13}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">14</th>
+                    <th class="col-2">有机质含量</th>
+                    <th class="col-3"><input type="text" id="k14" name="k14" value="{$content.k14}"></th>
+                    <th class="col-4">%</th>
+                    <th class="col-5"><input type="text" id="beizhu14" name="beizhu14" value="{$content.beizhu14}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">15</th>
+                    <th class="col-2">氮磷钾（N+P2O5+k2O）含量</th>
+                    <th class="col-3"><input type="text" id="k15" name="k15" value="{$content.k15}"></th>
+                    <th class="col-4">%</th>
+                    <th class="col-5"><input type="text" id="beizhu15" name="beizhu15" value="{$content.beizhu15}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">16</th>
+                    <th class="col-2">总氮</th>
+                    <th class="col-3"><input type="text" id="k16" name="k16" value="{$content.k16}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu16" name="beizhu16" value="{$content.beizhu16}"</th>
+                </tr>
+                <tr>
+                    <th class="col-1">17</th>
+                    <th class="col-2">氨氮</th>
+                    <th class="col-3"><input type="text" id="k17" name="k17" value="{$content.k17}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu17" name="beizhu17" value="{$content.beizhu17}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">18</th>
+                    <th class="col-2">硝态氮</th>
+                    <th class="col-3"><input type="text" id="k18" name="k18" value="{$content.k18}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu18" name="beizhu18" value="{$content.beizhu18}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">19</th>
+                    <th class="col-2">总磷</th>
+                    <th class="col-3"><input type="text" id="k19" name="k19" value="{$content.k19}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu19" name="beizhu19" value="{$content.beizhu19}"></th>
+                </tr>
+                <tr>
+                    <th class="col-1">20</th>
+                    <th class="col-2">总钾</th>
+                    <th class="col-3"><input type="text" id="k20" name="k20" value="{$content.k20}"></th>
+                    <th class="col-4">mg/kg</th>
+                    <th class="col-5"><input type="text" id="beizhu20" name="beizhu20" value="{$content.beizhu20}"></th>
+                </tr>
+                </tbody>
+            </table>
+            <div class="shenbao">
+                <button id="savebtn" class="btn btn-info marginleft40" type="button">保存</button>
+            </div>
+        </form>
+    </div>
+    <!-- 右侧内容框架，更改从这里结束 -->
+</div>
+    <script>
+        $(function () {
+            $("#savebtn").on('click',function () {
+                //表单使用ajax提交
+                $.ajax({
+                    type:'POST',
+                    url:"{:url('user4/save')}",//调用user4控制器的save方法
+                    data:$("#zhibiao").serialize(),//数据来源于表单，并对数据进行序列化,提交表单
+                    dataType:'json',//数据类型
+                    success:function (data) {
+                        if(data.status==1){
+                            alert(data.message);
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        }else {
+                            alert(data.message);
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        }
+                    },
+                    error:function () {
+                        alert("服务器出错！");
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
